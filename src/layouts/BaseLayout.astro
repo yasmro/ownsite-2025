@@ -1,6 +1,8 @@
 ---
+import { LenisProvider } from '@/components/provider/LenisProvider';
 import '../styles/global.css';
 const { content } = Astro.props;
+
 ---
 
 <html lang="en">
@@ -10,7 +12,9 @@ const { content } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{content.title}</title>
 	</head>
-	<body>
-		<slot />
+	<body style={{ margin: 0, padding: 0 }}>
+    <LenisProvider client:only="react">
+      <slot />
+    </LenisProvider>
 	</body>
 </html>
