@@ -2,7 +2,7 @@
 layout: ../layouts/VanillaLayout.astro
 title: About
 author: Yu Ohno
-description: Here is my introdcution.
+description: Here is my introduction.
 ---
 
 # About
