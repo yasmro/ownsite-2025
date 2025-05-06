@@ -1,0 +1,32 @@
+---
+import VanillaLayout from "@/layouts/VanillaLayout.astro";
+import { fetchEntriesWithLocale, renderRichText } from "@/lib/contentful";
+
+export async function getStaticPaths() {
+  const locales = ["en-US", "ja"];
+  const pages = await Promise.all(
+    locales.flatMap(async (locale) => {
+      const postSlugs = await fetchEntriesWithLocale("works", locale);
+      return postSlugs.map((post) => {
+        return {
+          params: { lang: locale === "en-US" ? undefined : locale, slug: post.slug },
+          props: {
+            title: post.title,
+            description: renderRichText(post.description),
+          },
+        };
+      });
+    })
+  );
+  return pages.flat();
+}
+
+const { title, description } = Astro.props;
+
+---
+
+<VanillaLayout content={{ title: title || "Works" }}>
+  <h1>Works</h1>
+  <h2>{title}</h2>
+  <article set:html={description} />
+</VanillaLayout>

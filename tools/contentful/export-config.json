@@ -1,0 +1,8 @@
+{
+  "spaceId": "e7muoilmgguu",
+  "contentFile": "tools/contentful/contentful-export.json",
+  "skipContent": true,
+  "skipRoles": true,
+  "skipWebhooks": true,
+  "skipTags": true
+}
