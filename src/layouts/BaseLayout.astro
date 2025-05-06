@@ -1,11 +1,10 @@
 ---
-import { LenisProvider } from '@/components/provider/LenisProvider';
 import '../styles/global.css';
 const { content } = Astro.props;
 
 ---
 
-<html lang="en">
+<html lang={Astro.currentLocale}>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -13,8 +12,6 @@ const { content } = Astro.props;
 		<title>{content.title}</title>
 	</head>
 	<body style={{ margin: 0, padding: 0 }}>
-    <LenisProvider client:only="react">
-      <slot />
-    </LenisProvider>
+		<slot />
 	</body>
 </html>
