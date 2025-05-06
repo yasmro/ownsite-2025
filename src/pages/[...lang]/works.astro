@@ -1,0 +1,29 @@
+---
+import VanillaLayout from "@/layouts/VanillaLayout.astro";
+import { fetchEntriesWithLocale } from "@/lib/contentful";
+
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: undefined } },
+    { params: { lang: 'ja' } },
+  ];
+}
+
+
+const lang = Astro.params.lang || 'en-US';
+const works = await fetchEntriesWithLocale("works", lang);
+if (!works) {
+  throw new Error("No works found");
+}
+
+---
+
+<VanillaLayout content={{ title: "Works" }}>
+  <h1>Works</h1>
+  <ul>
+    {works.map((work) => (
+      <li>{work.title}</li>
+    ))}
+  </ul>
+</VanillaLayout>
