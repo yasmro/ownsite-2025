@@ -1,0 +1,28 @@
+---
+import '../styles/global.css';
+import { useTranslations, type Lang } from '@/lib/i18n';
+import BaseLayout from './BaseLayout.astro';
+const { content } = Astro.props;
+
+const t = useTranslations(Astro.currentLocale as Lang);
+
+---
+
+<BaseLayout content={content}>
+	<slot />
+	<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@latest/bundled/lenis.min.js"></script>
+	<script is:inline>
+		window.addEventListener('DOMContentLoaded', () => {
+			if (typeof Lenis !== 'undefined') {
+				const lenis = new Lenis({ smooth: true });
+				function raf(time) {
+					lenis.raf(time);
+					requestAnimationFrame(raf);
+				}
+				requestAnimationFrame(raf);
+			} else {
+				console.warn('Lenis is not loaded');
+			}
+		});
+	</script>
+</BaseLayout>

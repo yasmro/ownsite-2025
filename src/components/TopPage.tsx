@@ -1,7 +1,6 @@
-"use client";
-
 import { DotWaveCanvas } from "./canvas";
 import { WaveParticles } from "./canvas/WaveParticle/WaveParticle";
+import { Button } from "./ui/button";
 
 export default function TopPage() {
   return (
@@ -18,6 +17,9 @@ export default function TopPage() {
             <p className="text-xl md:text-2xl max-w-2xl mx-auto opacity-80">
               スクロールして、ドットの波がどのように反応するか体験してください
             </p>
+            <a href="/test">
+              <Button>Test</Button>
+            </a>
           </div>
         </div>
       </div>

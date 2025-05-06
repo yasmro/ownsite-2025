@@ -1,0 +1,12 @@
+---
+import { LenisProvider } from '@/components/provider/LenisProvider';
+import '../styles/global.css';
+import BaseLayout from './BaseLayout.astro';
+const { content } = Astro.props;
+---
+
+<BaseLayout content={content}>
+	<LenisProvider client:only="react">
+		<slot />
+	</LenisProvider>
+</BaseLayout>

@@ -1,0 +1,16 @@
+---
+import ReactLayout from "@/layouts/ReactLayout.astro";
+import TopPage from "../../components/TopPage"
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: undefined } },
+    { params: { lang: 'ja' } },
+  ];
+}
+
+---
+
+<ReactLayout content={{title:"Top"}}>
+	<TopPage client:only="react" />
+</ReactLayout>
