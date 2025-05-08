@@ -1,7 +1,14 @@
 ---
 import ThemeIcon from './ThemeIcon.astro';
 ---
-<header class="l-header z-10 fixed top-0 left-0 w-full h-16 flex items-center justify-between bg-white text-black dark:bg-black dark:text-white">
-  <div class="w-36"><img class="fill-current text-black" src="/public/images/name.svg" alt="Yu Ohno Logo" /></div>
+<header class="l-header z-50 fixed top-0 left-0 w-full h-16 flex items-center justify-between bg-white text-black dark:bg-black dark:text-white">
+  <div class="flex">
+    <a href="/" class="w-36 mix-blend-multiply dark:mix-blend-difference dark:invert dark:grayscale">
+      <img src="/public/images/name.png" width={128} height={34} alt="Yu Ohno" />
+    </a>
+    <a href="/about">
+      About
+    </a>
+  </div>
   <ThemeIcon />
 </header>

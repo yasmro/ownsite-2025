@@ -128,9 +128,6 @@ export function DotWaveCanvas() {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="w-full h-full z-0 bg-white dark:bg-black"
-    />
+    <canvas ref={canvasRef} className="w-full h-full bg-white dark:bg-black" />
   );
 }

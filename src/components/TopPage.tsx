@@ -7,12 +7,12 @@ export default function TopPage() {
       <div className="fixed inset-0 z-0 blur-[2px]">
         <DotWaveCanvas />
       </div>
-      <div className="relative">
+      <div className="relative z-10">
         <div className="h-screen flex items-center justify-center">
-          <div className="container px-8 text-center">
+          <div className="mx-auto text-center">
             <img
               src="/public/images/kyoushindohaku2.png"
-              className="mix-blend-multiply dark:bg-blend-multiply dark:mix-blend-multiply"
+              className="mix-blend-multiply dark:mix-blend-difference dark:invert dark:grayscale"
               loading="lazy"
               width={132}
               height={437}
