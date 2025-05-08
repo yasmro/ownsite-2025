@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Header from '../components/header/Header.astro';
 const { content } = Astro.props;
 
 ---
@@ -9,9 +10,28 @@ const { content } = Astro.props;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/line-seed-jp/line-seed-jp.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.typekit.net/gnm6hip.css"
+      media="print"
+      onload="this.media='all'"
+    />
 		<title>{content.title}</title>
 	</head>
 	<body style={{ margin: 0, padding: 0 }}>
+		<Header />
 		<slot />
 	</body>
 </html>
