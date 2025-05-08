@@ -11,7 +11,7 @@ export default function TopPage() {
         <div className="h-screen flex items-center justify-center">
           <div className="mx-auto text-center">
             <img
-              src="/public/images/kyoushindohaku2.png"
+              src="/images/kyoushindohaku2.png"
               className="mix-blend-multiply dark:mix-blend-difference dark:invert dark:grayscale"
               loading="lazy"
               width={132}
