@@ -1,6 +1,13 @@
 @import 'tailwindcss';
 @import "tw-animate-css";
 
+*{
+  font-family: "Hanken Grotesk", "LINE Seed JP", sans-serif;
+  font-feature-settings: "palt";
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

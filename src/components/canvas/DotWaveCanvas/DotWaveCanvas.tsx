@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLenis } from "lenis/react";
+import { cn } from "@/lib/utils";
 
 interface Dot {
   x: number;
@@ -11,10 +12,17 @@ interface Dot {
 }
 
 export function DotWaveCanvas() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dotsRef = useRef<Dot[]>([]);
   const animationRef = useRef<number>(0);
   const scrollYRef = useRef<number>(0);
+
+  useEffect(() => {
+    const html = document.documentElement; // <html> タグ
+    setIsDarkMode(html.classList.contains("dark"));
+  }, []);
 
   // Lenisからスクロール位置を取得
   useLenis(({ scroll }) => {
@@ -73,7 +81,9 @@ export function DotWaveCanvas() {
 
         // スクロールに応じて波の振幅と周波数を変化させる
         const amplitudeFactor = 1 + scrollFactor * 2;
-        const frequencyFactor = 1 + scrollFactor * 0.5;
+        // const frequencyFactor = 1 + scrollFactor * 0.5;
+        const frequencyFactor = 1;
+        const phaseFactor = 0.5 + Math.sin(time * 0.001 + dot.x * 0.01) * 0.5;
 
         // 波の計算
         const wave =
@@ -83,7 +93,8 @@ export function DotWaveCanvas() {
               waveOffset
           ) *
           dot.amplitude *
-          amplitudeFactor;
+          amplitudeFactor *
+          phaseFactor;
 
         // ドットの位置を更新
         dot.y = dot.baseY + wave;
@@ -93,7 +104,7 @@ export function DotWaveCanvas() {
         const lightness = 50 + Math.sin(time * 0.001 + dot.x * 0.01) * 20;
 
         // ドットを描画
-        ctx.fillStyle = `hsla(${hue}, 80%, ${lightness}%, 0.8)`;
+        ctx.fillStyle = `hsla(${hue}, 5%, ${lightness}%, 0.8)`;
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
         ctx.fill();
@@ -116,5 +127,10 @@ export function DotWaveCanvas() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="w-full h-full" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="w-full h-full z-0 bg-white dark:bg-black"
+    />
+  );
 }
