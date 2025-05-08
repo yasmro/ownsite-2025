@@ -23,7 +23,7 @@ if (!works) {
   <h1>Works</h1>
   <ul>
     {works.map((work) => (
-      <li>{work.title}</li>
+      <li><a href={`/works/${work.slug}`}>{work.title}</a></li>
     ))}
   </ul>
 </VanillaLayout>
