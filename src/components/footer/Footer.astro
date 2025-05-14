@@ -1,0 +1,28 @@
+---
+import { Image } from 'astro:assets';
+
+const currentYear = new Date().getFullYear();
+
+---
+<footer class="w-full py-12 mt-auto bg-neutral-100 text-black dark:bg-neutral-800 dark:text-white">
+  <div class="container mx-auto flex flex-col gap-4 items-center justify-center">
+      <a href="/" class="w-36 mix-blend-multiply dark:mix-blend-difference dark:invert dark:grayscale">
+        <Image src="/images/name.png" width={128} height={34} alt="Yu Ohno" />
+      </a>
+      <ul class="flex gap-4">
+        <li>
+          <a href="mailto:yu.ohno.52@gmail.com" rel="noreferrer noopener" target="_blank">Email</a>
+        </li>
+        <li>
+          <a href="https://github.com/yasmro" rel="noreferrer noopener" target="_blank">GitHub</a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/yu.ohno.16" rel="noreferrer noopener" target="_blank">Facebook</a>
+        </a>
+        <li>
+          <a href="https://www.linkedin.com/in/yu-ohno-7b7718102" rel="noreferrer noopener" target="_blank">LinkedIn</a>
+        </li>
+      </ul>
+      <p>Copyright © {currentYear} Yu Ohno "Yasumaro" All rights reserved.</p>
+  </div>
+</footer>

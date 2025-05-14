@@ -1,15 +1,13 @@
 ---
 import '../styles/global.css';
-import { useTranslations, type Lang } from '@/lib/i18n';
 import BaseLayout from './BaseLayout.astro';
-const { content } = Astro.props;
-
-const t = useTranslations(Astro.currentLocale as Lang);
-
+const { content, class: className } = Astro.props;
 ---
 
 <BaseLayout content={content}>
-	<slot />
+	<main class={className}>
+		<slot />
+	</main>
 	<script src="https://unpkg.com/lenis@1.3.1/dist/lenis.min.js"></script> 
 	<script is:inline>
 		window.addEventListener('DOMContentLoaded', () => {

@@ -1,0 +1,33 @@
+---
+import VanillaLayout from "@/layouts/VanillaLayout.astro";
+import { Content } from '@/posts/ja/about.md';
+import { getLangFromUrl } from "@/lib/i18n/utils";
+
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: undefined } },
+    { params: { lang: 'ja' } },
+  ];
+}
+
+
+
+
+---
+
+<VanillaLayout content={{ title: "About" }}>
+  <main>
+
+    <h1>About</h1>
+
+    <article class="article-content flex gap-4">
+      <div class="w-[400px]">
+        <img class="mix-blend-multiply dark:mix-blend-difference dark:invert dark:grayscale" src="/images/toplogo.svg" width="78" height="270" alt="Yu Ohno" />
+      </div>
+      <div>
+        <Content />
+      </div>
+    </article>
+  </main>
+</VanillaLayout>

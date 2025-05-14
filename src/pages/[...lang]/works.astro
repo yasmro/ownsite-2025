@@ -1,6 +1,7 @@
 ---
 import VanillaLayout from "@/layouts/VanillaLayout.astro";
 import { fetchEntriesWithLocale } from "@/lib/contentful";
+import { getLangFromUrl, useTranslations } from "@/lib/i18n/utils";
 
 
 export async function getStaticPaths() {
@@ -10,9 +11,10 @@ export async function getStaticPaths() {
   ];
 }
 
-
-const lang = Astro.params.lang || 'en-US';
-const works = await fetchEntriesWithLocale("works", lang);
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const locale = lang === "en" ? "en-US" : lang;
+const works = await fetchEntriesWithLocale("works", locale);
 if (!works) {
   throw new Error("No works found");
 }

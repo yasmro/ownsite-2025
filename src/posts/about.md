@@ -1,5 +1,4 @@
 ---
-layout: ../layouts/VanillaLayout.astro
 title: About
 author: Yu Ohno
 description: Here is my introduction.
@@ -7,7 +6,7 @@ description: Here is my introduction.
 
 # About
 
-![Yu Ohno](https://yasmro.vercel.app/ja/about/)
+![Yu Ohno](/images/toplogo.svg)
 
 ## Yu Ohno
 
